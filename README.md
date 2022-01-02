@@ -26,7 +26,8 @@ Using the default settings, this allows for 4096 unique IDs to be generated ever
 
 ## Installation
 
-```sh
+```toml
+snowflake = { git = "https://github.com/piaohua/snowflake-rust", version = "0.1.0" }
 ```
 
 ## Usage:
