@@ -98,16 +98,14 @@ impl Node {
         	panic!("invalid worker_id:{}", worker_id);
         }
 
-        let node: Node = Node{
+        Node{
             timestamp:0, 
             datacenter_id: datacenter_id,
             worker_id: worker_id,
             sequence:0,
             // epoch 时间偏移量，从2022年1月1日零点开始
             epoch: Local.ymd(2022, 1, 1).and_hms(0, 0, 0),
-        };
-
-        node
+        }
     }
 
     // generate_id creates and returns a unique snowflake ID
@@ -197,6 +195,7 @@ mod tests {
         println!("datetime = {}", dt);
         let node_id:u64 = id.node();
         println!("node_id = {}", node_id);
+        assert_eq!(node_id, 460);
         let sequence:u64 = id.sequence();
         println!("sequence = {}", sequence);
     }
