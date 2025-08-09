@@ -81,7 +81,7 @@ pub struct Node {
 impl Node {
     // new returns a new snowflake node that can be used to generate snowflake
     pub fn new(node_id: i32) -> Node {
-        if node_id >= NODE_ID_MAX {
+        if node_id > NODE_ID_MAX {
             eprintln!("invalid node_id:{}", node_id); 
             panic!("invalid node_id:{}", node_id);
         }
@@ -89,11 +89,11 @@ impl Node {
         let datacenter_id:i32 = node_id >> DATA_CENTER_ID_BITS;
         let worker_id:i32 = node_id & (-1 ^ (-1 << WORKER_ID_BITS));
 
-        if datacenter_id >= DATA_CENTER_ID_MAX {
+        if datacenter_id > DATA_CENTER_ID_MAX {
         	eprintln!("invalid datacenter_id:{}", datacenter_id);
         	panic!("invalid datacenter_id:{}", datacenter_id);
         }
-        if worker_id >= WORKER_ID_MAX {
+        if worker_id > WORKER_ID_MAX {
         	eprintln!("invalid worker_id:{}", worker_id);
         	panic!("invalid worker_id:{}", worker_id);
         }
